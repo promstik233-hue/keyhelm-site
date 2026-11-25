@@ -20,8 +20,8 @@
 </nav>
 
 <h1 data-l="uk">Інструкція</h1><h1 data-l="en">Guide</h1>
-<div class="toc" data-l="uk"><a href="#install">Встановлення</a><a href="#connect">Підключення</a><a href="#wifi">Wi-Fi плати</a><a href="#use">Керування платою</a><a href="#agent">Helmy Agent</a><a href="#deck">Кнопки й програми</a><a href="#notif">Сповіщення й Twitch</a><a href="#update">Оновлення прошивки</a><a href="#newboard">Нова плата</a><a href="#help">Проблеми</a></div>
-<div class="toc" data-l="en"><a href="#install">Install</a><a href="#connect">Connecting</a><a href="#wifi">Board Wi-Fi</a><a href="#use">Using the board</a><a href="#agent">Helmy Agent</a><a href="#deck">Keys and programs</a><a href="#notif">Notifications and Twitch</a><a href="#update">Firmware update</a><a href="#newboard">New board</a><a href="#help">Troubleshooting</a></div>
+<div class="toc" data-l="uk"><a href="#install">Встановлення</a><a href="#connect">Підключення</a><a href="#wifi">Wi-Fi плати</a><a href="#use">Керування платою</a><a href="#agent">Helmy Agent</a><a href="#deck">Кнопки й програми</a><a href="#notif">Сповіщення й Twitch</a><a href="#update">Оновлення прошивки</a><a href="#help">Проблеми</a></div>
+<div class="toc" data-l="en"><a href="#install">Install</a><a href="#connect">Connecting</a><a href="#wifi">Board Wi-Fi</a><a href="#use">Using the board</a><a href="#agent">Helmy Agent</a><a href="#deck">Keys and programs</a><a href="#notif">Notifications and Twitch</a><a href="#update">Firmware update</a><a href="#help">Troubleshooting</a></div>
 
 <!-- ============================ УКРАЇНСЬКА ============================ -->
 <div data-l="uk">
@@ -134,17 +134,7 @@
 </ol>
 <p class="tip">Нову версію Agent з новою прошивкою ви отримуєте, коли встановлюєте свіжий Helmy-Setup.exe.</p>
 
-<h2 id="newboard">9. Прошити нову плату</h2>
-<ol class="steps">
-  <li>Завантажте <b>Helmy-Firmware.zip</b> з <a href="./#download">головної сторінки</a> і розпакуйте.</li>
-  <li>Закрийте Helmy Agent. Підключіть плату USB-кабелем із даними.</li>
-  <li>Запустіть <code>Flash-Helmy.bat</code>. Прошивання триває 2–4 хвилини.</li>
-  <li>Якщо плату не знайдено: зажміть <b>BOOT</b>, натисніть <b>RESET</b>, відпустіть BOOT і запустіть ще раз.</li>
-  <li>Плата перезапуститься. Підключіть її до Agent (розділ 2).</li>
-</ol>
-<p class="note">Прошивання через <code>Flash-Helmy.bat</code> стирає всю пам'ять плати, зокрема Wi-Fi, спарювання й налаштування. Для плати, що вже працює, використовуйте оновлення з Agent (розділ 8): воно нічого не стирає.</p>
-
-<h2 id="help">10. Якщо щось не працює</h2>
+<h2 id="help">9. Якщо щось не працює</h2>
 <table>
   <tr><th>Проблема</th><th>Що робити</th></tr>
   <tr><td>Agent не бачить плату по USB</td><td>Замініть кабель на такий, що передає дані; спробуйте інший порт; переконайтесь, що жодна інша програма не тримає порт плати (термінали, Arduino IDE); у Журналі Agent шукайте «COM… busy».</td></tr>
@@ -267,17 +257,7 @@
 </ol>
 <p class="tip">You get a new Agent together with new firmware when you install a fresh Helmy-Setup.exe.</p>
 
-<h2 id="newboard">9. Flashing a new board</h2>
-<ol class="steps">
-  <li>Download <b>Helmy-Firmware.zip</b> from the <a href="./#download">home page</a> and unpack it.</li>
-  <li>Close the Helmy Agent. Connect the board with a USB data cable.</li>
-  <li>Run <code>Flash-Helmy.bat</code>. Flashing takes 2–4 minutes.</li>
-  <li>If the board is not found: hold <b>BOOT</b>, press <b>RESET</b>, release BOOT and run it again.</li>
-  <li>The board restarts. Connect it to the Agent (section 2).</li>
-</ol>
-<p class="note"><code>Flash-Helmy.bat</code> erases the board's whole memory including Wi-Fi, pairing and settings. For a board that already works use the Agent update (section 8): it erases nothing.</p>
-
-<h2 id="help">10. Troubleshooting</h2>
+<h2 id="help">9. Troubleshooting</h2>
 <table>
   <tr><th>Problem</th><th>What to do</th></tr>
   <tr><td>Agent does not see the board over USB</td><td>Use a data cable; try another port; make sure no other program holds the board's port (terminals, Arduino IDE); look for “COM… busy” in the Agent's Log.</td></tr>

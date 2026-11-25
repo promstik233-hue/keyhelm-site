@@ -60,20 +60,12 @@
 <h2 id="download" data-l="uk">Завантажити</h2><h2 id="download-en" data-l="en">Download</h2>
 <div class="grid">
   <div class="card">
-    <b data-l="uk">1. Helmy Agent для Windows</b><b data-l="en">1. Helmy Agent for Windows</b>
+    <b data-l="uk">Helmy Agent для Windows</b><b data-l="en">Helmy Agent for Windows</b>
     <p><span data-l="uk">Версія</span><span data-l="en">Version</span> <b id="aver">…</b> · <span id="asize"></span></p>
     <p><a class="btn" id="adl" href="download/Helmy-Setup.exe"><span data-l="uk">Helmy-Setup.exe</span><span data-l="en">Helmy-Setup.exe</span></a></p>
     <p>SHA-256: <code id="asha">…</code></p>
     <p data-l="uk">Windows 10/11, права адміністратора не потрібні. Програма й інсталятор — один файл.</p>
     <p data-l="en">Windows 10/11, no administrator rights needed. The program and installer are one file.</p>
-  </div>
-  <div class="card">
-    <b data-l="uk">2. Прошивка плати (для нових плат)</b><b data-l="en">2. Board firmware (for new boards)</b>
-    <p><span data-l="uk">Версія</span><span data-l="en">Version</span> <b id="fver">…</b> · <span id="fsize"></span></p>
-    <p><a class="btn" id="fdl" href="download/Helmy-Firmware.zip"><span data-l="uk">Helmy-Firmware.zip</span><span data-l="en">Helmy-Firmware.zip</span></a></p>
-    <p>SHA-256: <code id="fsha">…</code></p>
-    <p data-l="uk">Для плати Waveshare ESP32-S3-Touch-AMOLED-1.75C. Розпакуйте й запустіть <code>Flash-Helmy.bat</code>. Якщо плата вже з Helmy, оновлюйте прошивку з Agent.</p>
-    <p data-l="en">For the Waveshare ESP32-S3-Touch-AMOLED-1.75C board. Unpack and run <code>Flash-Helmy.bat</code>. If the board already runs Helmy, update the firmware from the Agent.</p>
   </div>
 </div>
 <p class="note" data-l="uk">Windows може показати попередження про невідомого видавця (SmartScreen): натисніть «Докладніше» → «Все одно виконати». Перевірте SHA-256 завантаженого файлу (PowerShell: <code>Get-FileHash .\Helmy-Setup.exe</code>) — він має збігатися з вказаним вище.</p>
@@ -112,7 +104,6 @@ const mb = n => (n/1048576).toFixed(1) + ' MB';
 fetch('helmy.json', {cache:'no-store'}).then(r => r.json()).then(v => {
   const a = v.agent || {}, f = v.firmware || {};
   if (a.version) { $('aver').textContent = a.version; $('asha').textContent = a.sha256; $('asize').textContent = mb(a.size); if (a.file) $('adl').href = a.file; }
-  if (f.version) { $('fver').textContent = f.version; $('fsha').textContent = f.sha256; $('fsize').textContent = mb(f.size); if (f.file) $('fdl').href = f.file; }
   if (v.email) $('mail').textContent = v.email;
 }).catch(() => {});
 </script>
