@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keyhelm: керуйте ПК з телефона</title>
+<meta name="description" content="Keyhelm: моніторинг і керування ПК з телефона. Завантажте програму для Windows.">
+<style>
+:root{--bg:#0a0a18;--surface:#12121f;--high:#1b1b30;--line:#2a2a46;--violet:#8b5cf6;--deep:#5b34e6;--text:#f2f2fa;--muted:#9a9ac0;--ok:#22d17b;--warn:#ffb347}
+@media (prefers-color-scheme: light){:root{--bg:#f4f4fa;--surface:#fff;--high:#e9e9f5;--line:#d3d3e6;--violet:#6d3fe0;--text:#1b1b2e;--muted:#62628a;--ok:#14a35f;--warn:#c97a00}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:24px 16px 64px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-size:28px;font-weight:800;letter-spacing:.12em;color:var(--violet)}
+.lang button{background:none;border:1px solid var(--line);color:var(--muted);padding:4px 10px;border-radius:8px;cursor:pointer}
+.lang button.on{color:var(--text);border-color:var(--violet)}
+h1{font-size:34px;line-height:1.2;margin:40px 0 8px}
+h2{font-size:22px;margin:40px 0 12px}
+p{color:var(--muted);margin:8px 0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;margin:16px 0}
+.btn{display:inline-block;background:var(--deep);color:#fff;text-decoration:none;padding:14px 24px;border-radius:12px;font-weight:600}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--text)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+code{background:var(--high);padding:2px 6px;border-radius:6px;word-break:break-all;font-size:13px}
+ol{padding-left:20px;color:var(--muted)} li{margin:6px 0}
+.note{border-left:3px solid var(--warn);padding-left:12px;color:var(--muted)}
+footer{margin-top:48px;font-size:14px;color:var(--muted)} footer a{color:var(--violet)}
+[data-l]{display:none} html[lang=uk] [data-l=uk],html[lang=en] [data-l=en]{display:revert}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo"><img src="icon-192.png" alt="" width="40" height="40" style="vertical-align:middle;border-radius:10px;margin-right:10px">Keyhelm</div>
+  <div class="lang"><button id="bUk">УКР</button> <button id="bEn">EN</button></div>
+</header>
+
+<section>
+  <h1 data-l="uk">Керуйте своїм ПК з телефона</h1>
+  <h1 data-l="en">Control your PC from your phone</h1>
+  <p data-l="uk">Моніторинг ЦП, пам'яті, дисків, мережі й відеокарти, миша й клавіатура, екран, геймпад, файли, живлення, сповіщення про перегрів. Усе напряму між вашим телефоном і ПК, без хмари й облікових записів.</p>
+  <p data-l="en">Monitor CPU, memory, disks, network and GPU; mouse and keyboard, screen, gamepad, files, power, overheating alerts. Everything goes directly between your phone and your PC: no cloud, no accounts.</p>
+</section>
+
+<section id="download" class="card">
+  <h2 style="margin-top:0" data-l="uk">Завантажити програму для Windows</h2>
+  <h2 style="margin-top:0" data-l="en">Download the Windows program</h2>
+  <p><span data-l="uk">Версія</span><span data-l="en">Version</span> <b id="ver">…</b> · <span id="size"></span> · <span id="date"></span></p>
+  <p><a class="btn" id="dl" href="download/Keyhelm-Setup.exe"><span data-l="uk">Завантажити Keyhelm-Setup.exe</span><span data-l="en">Download Keyhelm-Setup.exe</span></a></p>
+  <p>SHA-256: <code id="sha">…</code></p>
+  <p class="note" data-l="uk">Windows може показати попередження про невідомого видавця: натисніть «Докладніше» → «Все одно виконати». Перевірте SHA-256 завантаженого файлу (PowerShell: <code>Get-FileHash .\Keyhelm-Setup.exe</code>): він має збігатися з указаним тут.</p>
+  <p class="note" data-l="en">Windows may warn about an unknown publisher: press “More info” → “Run anyway”. Check the SHA-256 of the downloaded file (PowerShell: <code>Get-FileHash .\Keyhelm-Setup.exe</code>): it must match the one shown here.</p>
+</section>
+
+<section>
+  <h2 data-l="uk">Як почати</h2><h2 data-l="en">Getting started</h2>
+  <ol data-l="uk"><li>Встановіть програму на ПК (потрібні права адміністратора).</li><li>Відкрийте Keyhelm Agent: він покаже QR-код.</li><li>У застосунку Keyhelm на телефоні виберіть «Додати ПК» і скануйте код.</li><li>Підтвердіть сполучення на ПК й виберіть, що дозволити телефону.</li></ol>
+  <ol data-l="en"><li>Install the program on the PC (administrator rights are needed).</li><li>Open Keyhelm Agent: it shows a QR code.</li><li>In the Keyhelm phone app choose “Add PC” and scan the code.</li><li>Confirm the pairing on the PC and choose what the phone may do.</li></ol>
+  <p><a class="btn ghost" id="play" href="#" hidden><span data-l="uk">Застосунок у Google Play</span><span data-l="en">Get the app on Google Play</span></a></p>
+</section>
+
+<section>
+  <h2 data-l="uk">Безпека</h2><h2 data-l="en">Security</h2>
+  <div class="grid">
+    <div class="card"><b data-l="uk">Закріплений сертифікат</b><b data-l="en">Pinned certificate</b><p data-l="uk">Звʼязок шифрується (TLS), телефон перевіряє відбиток ПК.</p><p data-l="en">The link is encrypted (TLS) and the phone checks the PC's fingerprint.</p></div>
+    <div class="card"><b data-l="uk">Згода на ПК</b><b data-l="en">Consent on the PC</b><p data-l="uk">Спарювання, керування й екран потребують вашого підтвердження на ПК.</p><p data-l="en">Pairing, control and screen need your confirmation on the PC.</p></div>
+    <div class="card"><b data-l="uk">Окремі права</b><b data-l="en">Separate rights</b><p data-l="uk">Кожну дію (миша, файли, живлення, процеси) дозволяєте окремо й можете відкликати.</p><p data-l="en">You allow each action (mouse, files, power, processes) separately and can revoke it.</p></div>
+  </div>
+</section>
+
+<footer>
+  <a href="privacy.html" data-l="uk">Політика конфіденційності</a><a href="privacy.html" data-l="en">Privacy policy</a>
+  · <span data-l="uk">Підтримка:</span><span data-l="en">Support:</span> <span id="mail">[вкажіть email]</span>
+</footer>
+</div>
+<script>
+const $ = id => document.getElementById(id);
+function setLang(l){ document.documentElement.lang = l; $('bUk').classList.toggle('on', l==='uk'); $('bEn').classList.toggle('on', l==='en'); try{localStorage.setItem('lang', l)}catch(e){} }
+$('bUk').onclick = () => setLang('uk'); $('bEn').onclick = () => setLang('en');
+let saved = null; try{ saved = localStorage.getItem('lang') }catch(e){}
+setLang(saved || ((navigator.language||'').toLowerCase().startsWith('uk') ? 'uk' : 'en'));
+fetch('version.json', {cache:'no-store'}).then(r => r.json()).then(v => {
+  $('ver').textContent = v.version; $('sha').textContent = v.sha256; $('size').textContent = (v.size/1048576).toFixed(1) + ' MB'; $('date').textContent = v.date;
+  if (v.file) $('dl').href = v.file;
+  if (v.play) { $('play').href = v.play; $('play').hidden = false; }
+  if (v.email) $('mail').textContent = v.email;
+}).catch(() => {});
+</script>
+</body>
+</html>

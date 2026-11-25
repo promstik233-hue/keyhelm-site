@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Helmy: інструкція з підключення й користування</title>
+<meta name="description" content="Як підключити Helmy до ПК по USB і Bluetooth, налаштувати Wi-Fi, Twitch, кнопки, сповіщення й оновити прошивку.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<nav>
+  <a class="logo" href="./"><img src="icon-192.png" alt="" width="36" height="36">Helmy</a>
+  <a class="l" href="./"><span data-l="uk">Головна</span><span data-l="en">Home</span></a>
+  <a class="l" href="./#download"><span data-l="uk">Завантаження</span><span data-l="en">Download</span></a>
+  <a class="l on" href="guide.html"><span data-l="uk">Інструкція</span><span data-l="en">Guide</span></a>
+  <span class="lang"><button id="bUk">УКР</button> <button id="bEn">EN</button></span>
+</nav>
+
+<h1 data-l="uk">Інструкція</h1><h1 data-l="en">Guide</h1>
+<div class="toc" data-l="uk"><a href="#install">Встановлення</a><a href="#connect">Підключення</a><a href="#wifi">Wi-Fi плати</a><a href="#use">Керування платою</a><a href="#agent">Helmy Agent</a><a href="#deck">Кнопки й програми</a><a href="#notif">Сповіщення й Twitch</a><a href="#update">Оновлення прошивки</a><a href="#newboard">Нова плата</a><a href="#help">Проблеми</a></div>
+<div class="toc" data-l="en"><a href="#install">Install</a><a href="#connect">Connecting</a><a href="#wifi">Board Wi-Fi</a><a href="#use">Using the board</a><a href="#agent">Helmy Agent</a><a href="#deck">Keys and programs</a><a href="#notif">Notifications and Twitch</a><a href="#update">Firmware update</a><a href="#newboard">New board</a><a href="#help">Troubleshooting</a></div>
+
+<!-- ============================ УКРАЇНСЬКА ============================ -->
+<div data-l="uk">
+
+<h2 id="install">1. Встановлення Helmy Agent</h2>
+<ol class="steps">
+  <li>Завантажте <b>Helmy-Setup.exe</b> з <a href="./#download">головної сторінки</a>.</li>
+  <li>Запустіть файл. Якщо Windows показала синє вікно SmartScreen, натисніть «Докладніше» → «Все одно виконати» (програма поки без цифрового підпису видавця).</li>
+  <li>У майстрі залиште позначені пункти: ярлики й автозапуск з Windows. Права адміністратора не потрібні.</li>
+  <li>Agent запуститься й оселиться в треї (біля годинника). Закриття вікна лише ховає його в трей; повністю вийти можна через значок у треї → «Вийти».</li>
+</ol>
+<p class="tip">Оновити Agent: просто запустіть новіший Helmy-Setup.exe — він замінить стару версію, а налаштування збереже. Видалити: «Параметри Windows → Програми» або <code>Helmy-Setup.exe --uninstall</code>.</p>
+
+<h2 id="connect">2. Підключення плати до ПК</h2>
+<p>Helmy може працювати з Agent двома способами. Вони не потрібні одночасно: якщо вставлено USB-кабель, Agent користується ним, а Bluetooth вмикається, коли кабель вийнято.</p>
+
+<h3>Спосіб А. USB-кабель (найпростіший)</h3>
+<ol class="steps">
+  <li>Вставте <b>кабель із передаванням даних</b> (не лише для зарядки) у USB-порт плати й у ПК.</li>
+  <li>Agent знайде плату сам. На його головній сторінці з'явиться «<b>Helmy на зв'язку</b>» і транспорт «USB».</li>
+  <li>На платі одразу з'являться дані ПК (екран «Монітор ПК»). Кабель ще й заряджає акумулятор.</li>
+</ol>
+
+<h3>Спосіб Б. Bluetooth (без кабелю)</h3>
+<p>Потрібен ПК з Bluetooth 4.0+ (Windows 10/11) і увімкнений Bluetooth у налаштуваннях плати. Спарювання робиться один раз.</p>
+<ol class="steps">
+  <li>На платі відкрийте <b>Меню → Налаштування → Підключення</b> (або «Меню → Bluetooth»). Торкніться плитки <b>«Bluetooth з ПК — тап — спарити»</b>. Плата покаже шестизначний <b>PIN</b> і чекатиме 5 хвилин.</li>
+  <li>В Agent відкрийте <b>Налаштування → Підключення</b>, у блоці Bluetooth введіть PIN і натисніть «Спарити».</li>
+  <li>Agent підтвердить підключення: на головній буде «на зв'язку», транспорт «Bluetooth». Надалі плата підключатиметься автоматично, щойно ПК поряд, а кабель вийнято.</li>
+</ol>
+<p class="note">Bluetooth повільніший за USB, тому великі дані (оновлення прошивки) йдуть довше. Якщо спарювання «зламалось» (Windows і плата пам'ятають різне), на платі торкніться плитки спарювання ще раз, щоб отримати новий PIN, і повторіть крок 2.</p>
+
+<h2 id="wifi">3. Wi-Fi плати</h2>
+<p>Wi-Fi плата використовує <b>сама</b>, без ПК: для погоди, інтернет-радіо, перевірки Twitch і точного часу. Підтримується лише мережа <b>2,4 ГГц</b>.</p>
+<ul>
+  <li><b>Через Agent (зручно):</b> Налаштування → блок «Wi-Fi Helmy». Кнопка «Мережа цього ПК» підставляє назву поточної мережі, введіть пароль і натисніть «Додати на Helmy». Тут же видно мережі плати, можна підключитись до іншої чи видалити зайву. Працює, коли плату підключено по USB або Bluetooth.</li>
+  <li><b>На самій платі:</b> Меню → Налаштування → «Wi-Fi мережі».</li>
+</ul>
+
+<h2 id="use">4. Керування платою</h2>
+<h3>Жести на екрані очей</h3>
+<table>
+  <tr><th>Жест</th><th>Що відбувається</th></tr>
+  <tr><td>Свайп ліворуч</td><td>Годинник, звідти — меню</td></tr>
+  <tr><td>Свайп праворуч</td><td>Сповіщення</td></tr>
+  <tr><td>Свайп угору</td><td>Швидкі налаштування (звук, тиша, режим гри, нічний режим, Wi-Fi, Bluetooth, радіо, нагадування, яскравість, гучність)</td></tr>
+  <tr><td>Свайп униз</td><td>Ліхтарик (екран світить білим; угору/вниз — яскравість)</td></tr>
+  <tr><td>Коротко натиснути PWR</td><td>Вимкнути екран; дотик будить</td></tr>
+</table>
+<p>У меню листайте сторінки свайпом ліворуч, повертайтесь свайпом праворуч.</p>
+
+<h3>Пункти меню</h3>
+<table>
+  <tr><td><b>Монітор ПК</b></td><td>Огляд, процесор, диск, мережа, відеокарта, живлення; листайте свайпом.</td></tr>
+  <tr><td><b>Керування ПК</b></td><td>Живлення, тачпад, гіро-миша, клавіатура, презентації, медіа. Деякі дії (сон, перезавантаження, вимкнення) потребують утримання кнопки.</td></tr>
+  <tr><td><b>Периферія</b></td><td>Bluetooth-пристрої із зарядом і пристрої 2,4 ГГц.</td></tr>
+  <tr><td><b>Що гріє ПК</b></td><td>Найважчі процеси зараз.</td></tr>
+  <tr><td><b>Плеєр ПК</b></td><td>Що грає на ПК; пауза, наступний трек, гучність.</td></tr>
+  <tr><td><b>Радіо</b></td><td>Інтернет-радіо через Wi-Fi плати; грає у фоні.</td></tr>
+  <tr><td><b>Програми</b></td><td>Програми, які ви обрали в Agent; дотик запускає програму на ПК.</td></tr>
+  <tr><td><b>Кнопки</b></td><td>Ваші кнопки Stream Deck (3 сторінки по 7 клавіш).</td></tr>
+  <tr><td><b>Сесія, Ігри</b></td><td>Ігрова сесія з нагадуванням про перерву; невеликі ігри на екрані.</td></tr>
+  <tr><td><b>Сповіщ., Twitch</b></td><td>Сповіщення Windows і Twitch.</td></tr>
+  <tr><td><b>Годинник, Погода, Будильник, Підсумок</b></td><td>Час, погода, будильник, підсумок дня.</td></tr>
+  <tr><td><b>Bluetooth, Налашт.</b></td><td>Спарювання; налаштування яскравості, звуку, тиші за розкладом, нагадувань, підключення тощо.</td></tr>
+</table>
+<p>Плата сама вимикає екран, коли нею не користуються (на акумуляторі швидше), і будиться дотиком. З ПК по кабелю екран не гасне.</p>
+
+<h2 id="agent">5. Helmy Agent: сторінки</h2>
+<table>
+  <tr><td><b>Головна</b></td><td>Анімований бот і стан: зв'язок (USB/Bluetooth), Wi-Fi плати, свіжість даних ПК, режим гри.</td></tr>
+  <tr><td><b>Периферія</b></td><td>Пристрої, підключені до ПК: Bluetooth із зарядом, 2,4 ГГц списком. Це саме те, що показує плата.</td></tr>
+  <tr><td><b>Кнопки</b></td><td>Редактор Stream Deck.</td></tr>
+  <tr><td><b>Програми</b></td><td>Вибір програм для екрана «Програми» на платі.</td></tr>
+  <tr><td><b>Сповіщення</b></td><td>Пересилання сповіщень Windows, фільтр програм, вхід у Twitch.</td></tr>
+  <tr><td><b>Налаштування</b></td><td>Підключення й PIN, Wi-Fi плати, прошивка, дозволи, назва пристрою, поведінка Agent.</td></tr>
+  <tr><td><b>Журнал</b></td><td>Що робить Agent; корисно, якщо щось не підключається.</td></tr>
+</table>
+<p>У Налаштуваннях <b>дозволи</b> вмикаються окремо: швидкі кнопки, керування мишею й клавіатурою, живлення тощо. Вимкнений дозвіл — плата цієї дії не зможе виконати.</p>
+
+<h2 id="deck">6. Кнопки й програми</h2>
+<ol class="steps">
+  <li>Відкрийте в Agent сторінку <b>Кнопки</b>. Виберіть сторінку (їх 3) і клавішу.</li>
+  <li>Задайте назву, значок і дію: <b>гаряча клавіша</b>, <b>текст</b>, <b>програма</b> (кнопки «Огляд», «Встановлені», аргументи), <b>сайт</b>, <b>медіа</b>, <b>живлення</b> або <b>макрос</b>.</li>
+  <li>Макрос — кроки через <code>;</code>: гаряча клавіша, <code>wait 500</code>, <code>text:привіт</code>, <code>url:https://…</code>, <code>media:play</code> (до 20 кроків).</li>
+  <li>Збережіть: розкладка одразу піде на плату, меню «Кнопки».</li>
+</ol>
+<p>Сторінка <b>Програми</b> працює так само, але простіше: оберіть програми зі списку встановлених — вони з'являться в меню «Програми» на платі (по 9 на сторінці).</p>
+
+<h2 id="notif">7. Сповіщення й Twitch</h2>
+<h3>Сповіщення Windows</h3>
+<ol class="steps">
+  <li>У Windows мають бути <b>увімкнені сповіщення</b>: «Параметри → Система → Сповіщення». Без цього Windows їх не показує, а Agent нічого не бачить.</li>
+  <li>В Agent: Сповіщення → «Пересилати сповіщення Windows на Helmy». Можна вимкнути окремі програми у фільтрі «Не пересилати від програм».</li>
+  <li>Нові сповіщення з'являються на платі коротким банером, а також у списку «Сповіщ.» (свайп праворуч).</li>
+</ol>
+<h3>Twitch: хто почав стрім</h3>
+<ol class="steps">
+  <li><b>Плата має бути підключена до Wi-Fi</b> (розділ 3) — Twitch вона перевіряє сама.</li>
+  <li>В Agent: Сповіщення → «Увійти через Twitch». Agent відкриє twitch.tv/activate і покаже код — введіть його й підтвердіть доступ. Agent паролів не бачить і токенів не зберігає: токен передається на плату.</li>
+  <li>Плата кожні 30–300 секунд (налаштовується в «Меню → Twitch → Налаштування») перевіряє канали, на які ви підписані, і показує плашку, коли хтось починає стрім. Можна вказати окремий список каналів.</li>
+</ol>
+
+<h2 id="update">8. Оновлення прошивки через Agent</h2>
+<ol class="steps">
+  <li>Підключіть плату (USB або Bluetooth). Рекомендується USB: швидше й надійніше.</li>
+  <li>В Agent: Налаштування → блок <b>«Прошивка Helmy»</b>. Там видно версію на платі й версію в Agent та підказку «Є новіша прошивка».</li>
+  <li>Натисніть <b>«Оновити прошивку»</b>. На платі з'явиться прогрес. <b>Не вимикайте плату й не закривайте Agent</b>: по USB це хвилина-дві, по Bluetooth довше.</li>
+  <li>Плата перевірить контрольну суму й <b>цифровий підпис</b> (чужу чи пошкоджену прошивку вона не прийме) і сама перезапуститься. Заряд має бути від 25% або плату підключено до живлення.</li>
+</ol>
+<p class="tip">Нову версію Agent з новою прошивкою ви отримуєте, коли встановлюєте свіжий Helmy-Setup.exe.</p>
+
+<h2 id="newboard">9. Прошити нову плату</h2>
+<ol class="steps">
+  <li>Завантажте <b>Helmy-Firmware.zip</b> з <a href="./#download">головної сторінки</a> і розпакуйте.</li>
+  <li>Закрийте Helmy Agent. Підключіть плату USB-кабелем із даними.</li>
+  <li>Запустіть <code>Flash-Helmy.bat</code>. Прошивання триває 2–4 хвилини.</li>
+  <li>Якщо плату не знайдено: зажміть <b>BOOT</b>, натисніть <b>RESET</b>, відпустіть BOOT і запустіть ще раз.</li>
+  <li>Плата перезапуститься. Підключіть її до Agent (розділ 2).</li>
+</ol>
+<p class="note">Прошивання через <code>Flash-Helmy.bat</code> стирає всю пам'ять плати, зокрема Wi-Fi, спарювання й налаштування. Для плати, що вже працює, використовуйте оновлення з Agent (розділ 8): воно нічого не стирає.</p>
+
+<h2 id="help">10. Якщо щось не працює</h2>
+<table>
+  <tr><th>Проблема</th><th>Що робити</th></tr>
+  <tr><td>Agent не бачить плату по USB</td><td>Замініть кабель на такий, що передає дані; спробуйте інший порт; переконайтесь, що жодна інша програма не тримає порт плати (термінали, Arduino IDE); у Журналі Agent шукайте «COM… busy».</td></tr>
+  <tr><td>Bluetooth не підключається</td><td>Увімкніть Bluetooth на ПК і на платі (швидкі налаштування); вийміть USB-кабель; отримайте новий PIN на платі й спаріть ще раз; якщо не допомагає, у Windows видаліть пристрій «Helmy» з Bluetooth і спаріть заново.</td></tr>
+  <tr><td>Сповіщення Windows не надходять</td><td>Увімкніть сповіщення Windows (розділ 7); перевірте, що програма не в списку заглушених; плата має бути «на зв'язку».</td></tr>
+  <tr><td>Twitch пише помилку</td><td>Перевірте Wi-Fi плати (екран «Підключення» має показувати «готово»), увійдіть у Twitch ще раз з Agent. Якщо екран пише «Потрібен новий вхід» — повторіть вхід.</td></tr>
+  <tr><td>Wi-Fi не підключається</td><td>Підтримується лише 2,4 ГГц; перевірте пароль (8–63 символи).</td></tr>
+  <tr><td>Дані ПК не оновлюються</td><td>На головній Agent перевірте «Дані ПК». Деякі датчики (напр. температура процесора) доступні лише коли Agent запущено від адміністратора.</td></tr>
+  <tr><td>Windows або антивірус лякає програму</td><td>Програма поки без цифрового підпису видавця. Перевірте SHA-256 файлу на головній сторінці.</td></tr>
+</table>
+<p>Не знайшли відповіді? Напишіть на пошту підтримки внизу сторінки й додайте файл журналу Agent (теку відкриває кнопка в сторінці «Журнал»).</p>
+
+</div>
+
+<!-- ============================ ENGLISH ============================ -->
+<div data-l="en">
+
+<h2 id="install">1. Install Helmy Agent</h2>
+<ol class="steps">
+  <li>Download <b>Helmy-Setup.exe</b> from the <a href="./#download">home page</a>.</li>
+  <li>Run it. If Windows shows the blue SmartScreen window, click “More info” → “Run anyway” (the program is not yet signed by a publisher certificate).</li>
+  <li>Keep the default options in the wizard (shortcuts and start with Windows). No administrator rights are needed.</li>
+  <li>The Agent starts and lives in the tray. Closing its window only hides it; to quit completely use the tray icon → “Exit”.</li>
+</ol>
+<p class="tip">To update the Agent just run a newer Helmy-Setup.exe — it replaces the old version and keeps your settings. To uninstall use “Apps” in Windows settings or <code>Helmy-Setup.exe --uninstall</code>.</p>
+
+<h2 id="connect">2. Connecting the board to the PC</h2>
+<p>Helmy talks to the Agent in two ways. They are not used at the same time: with a USB cable plugged in the Agent uses it, and Bluetooth takes over when the cable is out.</p>
+<h3>Option A. USB cable (simplest)</h3>
+<ol class="steps">
+  <li>Plug a <b>data-capable cable</b> (not charge-only) into the board and the PC.</li>
+  <li>The Agent finds the board by itself. Its home page shows “<b>Helmy connected</b>” with transport “USB”.</li>
+  <li>The board immediately shows PC data (“PC monitor”). The cable also charges the battery.</li>
+</ol>
+<h3>Option B. Bluetooth (wireless)</h3>
+<p>You need a PC with Bluetooth 4.0+ (Windows 10/11) and Bluetooth turned on in the board's settings. Pairing is done once.</p>
+<ol class="steps">
+  <li>On the board open <b>Menu → Settings → Connection</b> (or “Menu → Bluetooth”). Tap the <b>“Bluetooth to PC — tap to pair”</b> tile. The board shows a six-digit <b>PIN</b> and waits for 5 minutes.</li>
+  <li>In the Agent open <b>Settings → Connection</b>, type the PIN in the Bluetooth block and press “Pair”.</li>
+  <li>The Agent confirms: the home page says “connected”, transport “Bluetooth”. From then on the board connects automatically when the PC is near and the cable is out.</li>
+</ol>
+<p class="note">Bluetooth is slower than USB, so large transfers (firmware update) take longer. If pairing gets out of sync (Windows and the board remember different things), tap the pairing tile on the board again to get a new PIN and repeat step 2.</p>
+
+<h2 id="wifi">3. The board's Wi-Fi</h2>
+<p>The board uses Wi-Fi <b>on its own</b>, without the PC: for weather, internet radio, Twitch checks and exact time. Only <b>2.4 GHz</b> networks are supported.</p>
+<ul>
+  <li><b>Via the Agent (easiest):</b> Settings → “Wi-Fi Helmy”. “This PC's network” fills in the current network name; enter the password and press “Add to Helmy”. The same block lists the board's networks, lets you switch or delete them. Works while the board is connected by USB or Bluetooth.</li>
+  <li><b>On the board:</b> Menu → Settings → “Wi-Fi networks”.</li>
+</ul>
+
+<h2 id="use">4. Using the board</h2>
+<h3>Gestures on the eyes screen</h3>
+<table>
+  <tr><th>Gesture</th><th>What happens</th></tr>
+  <tr><td>Swipe left</td><td>Clock, and from there the menu</td></tr>
+  <tr><td>Swipe right</td><td>Notifications</td></tr>
+  <tr><td>Swipe up</td><td>Quick settings (sound, silent, game mode, night mode, Wi-Fi, Bluetooth, radio, reminders, brightness, volume)</td></tr>
+  <tr><td>Swipe down</td><td>Flashlight (white screen; up/down changes brightness)</td></tr>
+  <tr><td>Short press PWR</td><td>Screen off; a touch wakes it</td></tr>
+</table>
+<p>In the menu, swipe left for the next page and right to go back.</p>
+<h3>Menu items</h3>
+<table>
+  <tr><td><b>PC monitor</b></td><td>Overview, CPU, disk, network, GPU, power; swipe to switch views.</td></tr>
+  <tr><td><b>PC control</b></td><td>Power, touchpad, gyro mouse, keyboard, presentations, media. Some actions (sleep, restart, shutdown) need a press-and-hold.</td></tr>
+  <tr><td><b>Peripherals</b></td><td>Bluetooth devices with battery and 2.4 GHz devices.</td></tr>
+  <tr><td><b>What heats the PC</b></td><td>The heaviest processes right now.</td></tr>
+  <tr><td><b>PC player</b></td><td>What is playing on the PC; pause, next track, volume.</td></tr>
+  <tr><td><b>Radio</b></td><td>Internet radio over the board's Wi-Fi; plays in the background.</td></tr>
+  <tr><td><b>Apps</b></td><td>Programs you picked in the Agent; a tap launches the program on the PC.</td></tr>
+  <tr><td><b>Quick keys</b></td><td>Your Stream Deck keys (3 pages of 7 keys).</td></tr>
+  <tr><td><b>Session, Games</b></td><td>Gaming session with break reminders; small games on the screen.</td></tr>
+  <tr><td><b>Alerts, Twitch</b></td><td>Windows and Twitch notifications.</td></tr>
+  <tr><td><b>Clock, Weather, Alarm, Summary</b></td><td>Time, weather, alarm, daily summary.</td></tr>
+  <tr><td><b>Bluetooth, Settings</b></td><td>Pairing; brightness, sound, quiet schedule, reminders, connection and more.</td></tr>
+</table>
+<p>The board turns its screen off by itself when idle (sooner on battery) and wakes on touch. With a PC cable plugged in the screen stays on.</p>
+
+<h2 id="agent">5. Helmy Agent pages</h2>
+<table>
+  <tr><td><b>Home</b></td><td>Animated bot and status: link (USB/Bluetooth), board Wi-Fi, PC data freshness, game mode.</td></tr>
+  <tr><td><b>Peripherals</b></td><td>Devices connected to the PC: Bluetooth with battery, 2.4 GHz as a list — exactly what the board shows.</td></tr>
+  <tr><td><b>Keys</b></td><td>Stream Deck editor.</td></tr>
+  <tr><td><b>Programs</b></td><td>Pick programs for the board's “Apps” screen.</td></tr>
+  <tr><td><b>Notifications</b></td><td>Forwarding of Windows notifications, app filter, Twitch sign-in.</td></tr>
+  <tr><td><b>Settings</b></td><td>Connection and PIN, board Wi-Fi, firmware, permissions, device name, Agent behaviour.</td></tr>
+  <tr><td><b>Log</b></td><td>What the Agent is doing; handy when something does not connect.</td></tr>
+</table>
+<p>In Settings the <b>permissions</b> are separate switches: quick keys, mouse and keyboard control, power, etc. A switched-off permission means the board cannot perform that action.</p>
+
+<h2 id="deck">6. Keys and programs</h2>
+<ol class="steps">
+  <li>Open the Agent's <b>Keys</b> page. Pick a page (there are 3) and a key.</li>
+  <li>Set a name, icon and action: <b>hotkey</b>, <b>text</b>, <b>program</b> (Browse / Installed buttons, arguments), <b>website</b>, <b>media</b>, <b>power</b> or <b>macro</b>.</li>
+  <li>A macro is steps separated by <code>;</code>: hotkey, <code>wait 500</code>, <code>text:hello</code>, <code>url:https://…</code>, <code>media:play</code> (up to 20 steps).</li>
+  <li>Save: the layout goes to the board right away, menu item “Quick keys”.</li>
+</ol>
+<p>The <b>Programs</b> page is simpler: choose programs from the installed list — they appear in the board's “Apps” menu (9 per page).</p>
+
+<h2 id="notif">7. Notifications and Twitch</h2>
+<h3>Windows notifications</h3>
+<ol class="steps">
+  <li>Windows <b>notifications must be on</b>: Settings → System → Notifications. If they are off Windows shows nothing and the Agent sees nothing.</li>
+  <li>In the Agent: Notifications → “Forward Windows notifications to Helmy”. Mute individual programs in “Do not forward from apps”.</li>
+  <li>New notifications appear on the board as a short banner and in the “Alerts” list (swipe right).</li>
+</ol>
+<h3>Twitch: who just went live</h3>
+<ol class="steps">
+  <li><b>The board must be on Wi-Fi</b> (section 3) — it checks Twitch by itself.</li>
+  <li>In the Agent: Notifications → “Sign in with Twitch”. The Agent opens twitch.tv/activate and shows a code — enter it and approve access. The Agent never sees your password and does not store tokens: the token is handed to the board.</li>
+  <li>Every 30–300 seconds (set in “Menu → Twitch → Settings”) the board checks the channels you follow and shows a banner when someone goes live. You can also give your own channel list.</li>
+</ol>
+
+<h2 id="update">8. Updating the firmware from the Agent</h2>
+<ol class="steps">
+  <li>Connect the board (USB or Bluetooth). USB is recommended: faster and more reliable.</li>
+  <li>In the Agent: Settings → <b>“Helmy firmware”</b>. It shows the version on the board and in the Agent, and “A newer firmware is available”.</li>
+  <li>Press <b>“Update firmware”</b>. The board shows progress. <b>Do not power off the board or close the Agent</b>: a minute or two over USB, longer over Bluetooth.</li>
+  <li>The board checks the checksum and the <b>digital signature</b> (it rejects foreign or damaged firmware) and restarts by itself. The battery must be at 25%+ or the board on external power.</li>
+</ol>
+<p class="tip">You get a new Agent together with new firmware when you install a fresh Helmy-Setup.exe.</p>
+
+<h2 id="newboard">9. Flashing a new board</h2>
+<ol class="steps">
+  <li>Download <b>Helmy-Firmware.zip</b> from the <a href="./#download">home page</a> and unpack it.</li>
+  <li>Close the Helmy Agent. Connect the board with a USB data cable.</li>
+  <li>Run <code>Flash-Helmy.bat</code>. Flashing takes 2–4 minutes.</li>
+  <li>If the board is not found: hold <b>BOOT</b>, press <b>RESET</b>, release BOOT and run it again.</li>
+  <li>The board restarts. Connect it to the Agent (section 2).</li>
+</ol>
+<p class="note"><code>Flash-Helmy.bat</code> erases the board's whole memory including Wi-Fi, pairing and settings. For a board that already works use the Agent update (section 8): it erases nothing.</p>
+
+<h2 id="help">10. Troubleshooting</h2>
+<table>
+  <tr><th>Problem</th><th>What to do</th></tr>
+  <tr><td>Agent does not see the board over USB</td><td>Use a data cable; try another port; make sure no other program holds the board's port (terminals, Arduino IDE); look for “COM… busy” in the Agent's Log.</td></tr>
+  <tr><td>Bluetooth does not connect</td><td>Turn Bluetooth on at the PC and the board (quick settings); unplug the USB cable; get a new PIN on the board and pair again; if that fails remove the “Helmy” device in Windows Bluetooth settings and pair from scratch.</td></tr>
+  <tr><td>No Windows notifications</td><td>Turn on Windows notifications (section 7); make sure the app is not muted; the board must be “connected”.</td></tr>
+  <tr><td>Twitch shows an error</td><td>Check the board's Wi-Fi (the Connection screen should say “ready”) and sign in to Twitch from the Agent again. If the screen says “New sign-in needed”, sign in again.</td></tr>
+  <tr><td>Wi-Fi does not connect</td><td>Only 2.4 GHz is supported; check the password (8–63 characters).</td></tr>
+  <tr><td>PC data does not update</td><td>Check “PC data” on the Agent's home page. Some sensors (e.g. CPU temperature) are only available when the Agent runs as administrator.</td></tr>
+  <tr><td>Windows or an antivirus warns about the program</td><td>The program is not yet signed with a publisher certificate. Compare the file's SHA-256 with the one on the home page.</td></tr>
+</table>
+<p>No answer here? Write to the support email at the bottom of the page and attach the Agent's log file (the Log page has a button that opens the folder).</p>
+
+</div>
+
+<footer>
+  <a href="./" data-l="uk">Головна</a><a href="./" data-l="en">Home</a>
+  · <a href="privacy.html" data-l="uk">Політика конфіденційності</a><a href="privacy.html" data-l="en">Privacy policy</a>
+  · <span data-l="uk">Підтримка:</span><span data-l="en">Support:</span> <span id="mail">[вкажіть email]</span>
+</footer>
+</div>
+<script>
+const $ = id => document.getElementById(id);
+function setLang(l){ document.documentElement.lang = l; $('bUk').classList.toggle('on', l==='uk'); $('bEn').classList.toggle('on', l==='en'); try{localStorage.setItem('lang', l)}catch(e){} }
+$('bUk').onclick = () => setLang('uk'); $('bEn').onclick = () => setLang('en');
+let saved = null; try{ saved = localStorage.getItem('lang') }catch(e){}
+setLang(saved || ((navigator.language||'').toLowerCase().startsWith('uk') ? 'uk' : 'en'));
+fetch('helmy.json', {cache:'no-store'}).then(r => r.json()).then(v => { if (v.email) $('mail').textContent = v.email; }).catch(() => {});
+</script>
+</body>
+</html>

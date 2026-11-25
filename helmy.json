@@ -1,0 +1,16 @@
+{
+    "agent":  {
+                  "version":  "0.1.0",
+                  "file":  "https://github.com/promstik233-hue/keyhelm-site/releases/download/helmy-v1/Helmy-Setup.exe",
+                  "sha256":  "156968113e8a6339b2991b4883ee1643e448b30939c6f16b13c9d59caf59e61b",
+                  "size":  77914076
+              },
+    "firmware":  {
+                     "version":  "2.0.0",
+                     "file":  "https://github.com/promstik233-hue/keyhelm-site/releases/download/helmy-v1/Helmy-Firmware.zip",
+                     "sha256":  "0794a05f3d4018cc65837d8653e9bc841086f490fbd820932ca6e9291def36d2",
+                     "size":  15361617
+                 },
+    "date":  "2026-11-25",
+    "email":  "promstik233@gmail.com"
+}

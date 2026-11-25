@@ -5,75 +5,100 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Keyhelm: керуйте ПК з телефона</title>
-<meta name="description" content="Keyhelm: моніторинг і керування ПК з телефона. Завантажте програму для Windows.">
-<style>
-:root{--bg:#0a0a18;--surface:#12121f;--high:#1b1b30;--line:#2a2a46;--violet:#8b5cf6;--deep:#5b34e6;--text:#f2f2fa;--muted:#9a9ac0;--ok:#22d17b;--warn:#ffb347}
-@media (prefers-color-scheme: light){:root{--bg:#f4f4fa;--surface:#fff;--high:#e9e9f5;--line:#d3d3e6;--violet:#6d3fe0;--text:#1b1b2e;--muted:#62628a;--ok:#14a35f;--warn:#c97a00}}
-*{box-sizing:border-box}
-[hidden]{display:none!important}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,"Segoe UI",Roboto,sans-serif}
-.wrap{max-width:860px;margin:0 auto;padding:24px 16px 64px}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{font-size:28px;font-weight:800;letter-spacing:.12em;color:var(--violet)}
-.lang button{background:none;border:1px solid var(--line);color:var(--muted);padding:4px 10px;border-radius:8px;cursor:pointer}
-.lang button.on{color:var(--text);border-color:var(--violet)}
-h1{font-size:34px;line-height:1.2;margin:40px 0 8px}
-h2{font-size:22px;margin:40px 0 12px}
-p{color:var(--muted);margin:8px 0}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;margin:16px 0}
-.btn{display:inline-block;background:var(--deep);color:#fff;text-decoration:none;padding:14px 24px;border-radius:12px;font-weight:600}
-.btn.ghost{background:none;border:1px solid var(--line);color:var(--text)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
-code{background:var(--high);padding:2px 6px;border-radius:6px;word-break:break-all;font-size:13px}
-ol{padding-left:20px;color:var(--muted)} li{margin:6px 0}
-.note{border-left:3px solid var(--warn);padding-left:12px;color:var(--muted)}
-footer{margin-top:48px;font-size:14px;color:var(--muted)} footer a{color:var(--violet)}
-[data-l]{display:none} html[lang=uk] [data-l=uk],html[lang=en] [data-l=en]{display:revert}
-</style>
+<title>Helmy: живий помічник біля вашого ПК</title>
+<meta name="description" content="Helmy: настільний бот з живими очима на AMOLED-екрані. Показує стан ПК, керує ним, приймає сповіщення Windows і Twitch. Завантажте Helmy Agent і прошивку.">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="wrap">
-<header>
-  <div class="logo"><img src="icon-192.png" alt="" width="40" height="40" style="vertical-align:middle;border-radius:10px;margin-right:10px">Keyhelm</div>
-  <div class="lang"><button id="bUk">УКР</button> <button id="bEn">EN</button></div>
-</header>
+<nav>
+  <a class="logo" href="./"><img src="icon-192.png" alt="" width="36" height="36">Helmy</a>
+  <a class="l on" href="./"><span data-l="uk">Головна</span><span data-l="en">Home</span></a>
+  <a class="l" href="#download"><span data-l="uk">Завантаження</span><span data-l="en">Download</span></a>
+  <a class="l" href="guide.html"><span data-l="uk">Інструкція</span><span data-l="en">Guide</span></a>
+  <span class="lang"><button id="bUk">УКР</button> <button id="bEn">EN</button></span>
+</nav>
 
-<section>
-  <h1 data-l="uk">Керуйте своїм ПК з телефона</h1>
-  <h1 data-l="en">Control your PC from your phone</h1>
-  <p data-l="uk">Моніторинг ЦП, пам'яті, дисків, мережі й відеокарти, миша й клавіатура, екран, геймпад, файли, живлення, сповіщення про перегрів. Усе напряму між вашим телефоном і ПК, без хмари й облікових записів.</p>
-  <p data-l="en">Monitor CPU, memory, disks, network and GPU; mouse and keyboard, screen, gamepad, files, power, overheating alerts. Everything goes directly between your phone and your PC: no cloud, no accounts.</p>
-</section>
-
-<section id="download" class="card">
-  <h2 style="margin-top:0" data-l="uk">Завантажити програму для Windows</h2>
-  <h2 style="margin-top:0" data-l="en">Download the Windows program</h2>
-  <p><span data-l="uk">Версія</span><span data-l="en">Version</span> <b id="ver">…</b> · <span id="size"></span> · <span id="date"></span></p>
-  <p><a class="btn" id="dl" href="download/Keyhelm-Setup.exe"><span data-l="uk">Завантажити Keyhelm-Setup.exe</span><span data-l="en">Download Keyhelm-Setup.exe</span></a></p>
-  <p>SHA-256: <code id="sha">…</code></p>
-  <p class="note" data-l="uk">Windows може показати попередження про невідомого видавця: натисніть «Докладніше» → «Все одно виконати». Перевірте SHA-256 завантаженого файлу (PowerShell: <code>Get-FileHash .\Keyhelm-Setup.exe</code>): він має збігатися з указаним тут.</p>
-  <p class="note" data-l="en">Windows may warn about an unknown publisher: press “More info” → “Run anyway”. Check the SHA-256 of the downloaded file (PowerShell: <code>Get-FileHash .\Keyhelm-Setup.exe</code>): it must match the one shown here.</p>
-</section>
-
-<section>
-  <h2 data-l="uk">Як почати</h2><h2 data-l="en">Getting started</h2>
-  <ol data-l="uk"><li>Встановіть програму на ПК (потрібні права адміністратора).</li><li>Відкрийте Keyhelm Agent: він покаже QR-код.</li><li>У застосунку Keyhelm на телефоні виберіть «Додати ПК» і скануйте код.</li><li>Підтвердіть сполучення на ПК й виберіть, що дозволити телефону.</li></ol>
-  <ol data-l="en"><li>Install the program on the PC (administrator rights are needed).</li><li>Open Keyhelm Agent: it shows a QR code.</li><li>In the Keyhelm phone app choose “Add PC” and scan the code.</li><li>Confirm the pairing on the PC and choose what the phone may do.</li></ol>
-  <p><a class="btn ghost" id="play" href="#" hidden><span data-l="uk">Застосунок у Google Play</span><span data-l="en">Get the app on Google Play</span></a></p>
-</section>
-
-<section>
-  <h2 data-l="uk">Безпека</h2><h2 data-l="en">Security</h2>
-  <div class="grid">
-    <div class="card"><b data-l="uk">Закріплений сертифікат</b><b data-l="en">Pinned certificate</b><p data-l="uk">Звʼязок шифрується (TLS), телефон перевіряє відбиток ПК.</p><p data-l="en">The link is encrypted (TLS) and the phone checks the PC's fingerprint.</p></div>
-    <div class="card"><b data-l="uk">Згода на ПК</b><b data-l="en">Consent on the PC</b><p data-l="uk">Спарювання, керування й екран потребують вашого підтвердження на ПК.</p><p data-l="en">Pairing, control and screen need your confirmation on the PC.</p></div>
-    <div class="card"><b data-l="uk">Окремі права</b><b data-l="en">Separate rights</b><p data-l="uk">Кожну дію (миша, файли, живлення, процеси) дозволяєте окремо й можете відкликати.</p><p data-l="en">You allow each action (mouse, files, power, processes) separately and can revoke it.</p></div>
+<section class="hero">
+  <div>
+    <h1 data-l="uk">Helmy — живий помічник біля вашого ПК</h1>
+    <h1 data-l="en">Helmy — a living companion next to your PC</h1>
+    <p data-l="uk">Невеликий настільний бот з AMOLED-екраном і живими очима. Він показує, що діється з комп'ютером, керує ним кнопками й жестами, показує сповіщення Windows і початок трансляцій на Twitch — і просто тішить око. Працює з програмою <b>Helmy Agent</b> на ПК по USB або Bluetooth.</p>
+    <p data-l="en">A small desk bot with an AMOLED screen and lively eyes. It shows what your computer is doing, controls it with buttons and gestures, displays Windows notifications and Twitch stream alerts — and simply makes your desk nicer. It works with the <b>Helmy Agent</b> program on your PC over USB or Bluetooth.</p>
+    <p><a class="btn" href="#download"><span data-l="uk">Завантажити</span><span data-l="en">Download</span></a><a class="btn ghost" href="guide.html"><span data-l="uk">Інструкція з підключення</span><span data-l="en">Setup guide</span></a></p>
   </div>
+  <div class="bot" aria-hidden="true"><i></i><i></i><b></b></div>
 </section>
+
+<section class="shots">
+  <figure><img src="img/emo-normal.png" alt="" loading="lazy"><figcaption data-l="uk">Спокійний</figcaption><figcaption data-l="en">Calm</figcaption></figure>
+  <figure><img src="img/emo-happy.png" alt="" loading="lazy"><figcaption data-l="uk">Закоханий</figcaption><figcaption data-l="en">In love</figcaption></figure>
+  <figure><img src="img/emo-star.png" alt="" loading="lazy"><figcaption data-l="uk">Захоплений</figcaption><figcaption data-l="en">Amazed</figcaption></figure>
+  <figure><img src="img/emo-sleep.png" alt="" loading="lazy"><figcaption data-l="uk">Сонний</figcaption><figcaption data-l="en">Sleepy</figcaption></figure>
+</section>
+
+<h2 data-l="uk">Що вміє</h2><h2 data-l="en">What it does</h2>
+<div class="grid">
+  <div class="card"><b data-l="uk">Моніторинг ПК</b><b data-l="en">PC monitor</b><p data-l="uk">Навантаження й температура процесора та відеокарти, пам'ять, диск, мережа, час роботи. Екран «Що гріє ПК» показує найважчі процеси.</p><p data-l="en">CPU and GPU load and temperature, memory, disk, network, uptime. “What heats the PC” lists the heaviest processes.</p></div>
+  <div class="card"><b data-l="uk">Керування ПК</b><b data-l="en">PC control</b><p data-l="uk">Живлення (сон, перезавантаження, вимкнення з підтвердженням), тачпад і гіро-миша, гарячі клавіші, презентації, медіа.</p><p data-l="en">Power (sleep, restart, shutdown with confirmation), touchpad and gyro mouse, hotkeys, presentations, media.</p></div>
+  <div class="card"><b data-l="uk">Кнопки Stream Deck</b><b data-l="en">Stream Deck keys</b><p data-l="uk">Свої кнопки для програм, сайтів, макросів і гарячих клавіш. Редагуються в Agent, працюють на екрані плати.</p><p data-l="en">Your own keys for programs, websites, macros and hotkeys. Edited in the Agent, used on the board's screen.</p></div>
+  <div class="card"><b data-l="uk">Програми</b><b data-l="en">Programs</b><p data-l="uk">Оберіть програми в Agent — і запускайте їх дотиком до екрана плати.</p><p data-l="en">Pick programs in the Agent and launch them by tapping the board's screen.</p></div>
+  <div class="card"><b data-l="uk">Сповіщення</b><b data-l="en">Notifications</b><p data-l="uk">Сповіщення Windows з вибраних програм і сповіщення Twitch про початок стрімів ваших каналів (плата перевіряє Twitch сама через Wi-Fi).</p><p data-l="en">Windows notifications from chosen apps and Twitch alerts when your channels go live (the board checks Twitch itself over Wi-Fi).</p></div>
+  <div class="card"><b data-l="uk">Периферія</b><b data-l="en">Peripherals</b><p data-l="uk">Bluetooth-пристрої із зарядом, а також список пристроїв 2,4 ГГц, підключених до ПК.</p><p data-l="en">Bluetooth devices with battery level, plus a list of 2.4 GHz devices connected to the PC.</p></div>
+  <div class="card"><b data-l="uk">Годинник, погода, будильник</b><b data-l="en">Clock, weather, alarm</b><p data-l="uk">Годинник на очах, погода, будильник, нагадування випити води й розім'ятись, інтернет-радіо, ігри.</p><p data-l="en">Clock on the eyes, weather, alarm, water and stretch reminders, internet radio, games.</p></div>
+  <div class="card"><b data-l="uk">Без хмари</b><b data-l="en">No cloud</b><p data-l="uk">Дані йдуть напряму між платою та вашим ПК. Жодних акаунтів і серверів Helmy.</p><p data-l="en">Data goes directly between the board and your PC. No Helmy accounts or servers.</p></div>
+  <div class="card"><b data-l="uk">Оновлення через Agent</b><b data-l="en">Updates via the Agent</b><p data-l="uk">Нову прошивку можна встановити з Agent одним кліком, без кабелю для прошивання. Прошивка підписана.</p><p data-l="en">Install new firmware from the Agent with one click, no flashing cable needed. Firmware is signed.</p></div>
+</div>
+
+<section class="shots" style="margin-top:28px">
+  <figure><img src="img/menu.png" alt="" loading="lazy"><figcaption data-l="uk">Меню</figcaption><figcaption data-l="en">Menu</figcaption></figure>
+  <figure><img src="img/monitor.png" alt="" loading="lazy"><figcaption data-l="uk">Монітор ПК</figcaption><figcaption data-l="en">PC monitor</figcaption></figure>
+  <figure><img src="img/quick.png" alt="" loading="lazy"><figcaption data-l="uk">Швидкі налаштування</figcaption><figcaption data-l="en">Quick settings</figcaption></figure>
+  <figure><img src="img/settings.png" alt="" loading="lazy"><figcaption data-l="uk">Налаштування</figcaption><figcaption data-l="en">Settings</figcaption></figure>
+</section>
+
+<h2 id="download" data-l="uk">Завантажити</h2><h2 id="download-en" data-l="en">Download</h2>
+<div class="grid">
+  <div class="card">
+    <b data-l="uk">1. Helmy Agent для Windows</b><b data-l="en">1. Helmy Agent for Windows</b>
+    <p><span data-l="uk">Версія</span><span data-l="en">Version</span> <b id="aver">…</b> · <span id="asize"></span></p>
+    <p><a class="btn" id="adl" href="download/Helmy-Setup.exe"><span data-l="uk">Helmy-Setup.exe</span><span data-l="en">Helmy-Setup.exe</span></a></p>
+    <p>SHA-256: <code id="asha">…</code></p>
+    <p data-l="uk">Windows 10/11, права адміністратора не потрібні. Програма й інсталятор — один файл.</p>
+    <p data-l="en">Windows 10/11, no administrator rights needed. The program and installer are one file.</p>
+  </div>
+  <div class="card">
+    <b data-l="uk">2. Прошивка плати (для нових плат)</b><b data-l="en">2. Board firmware (for new boards)</b>
+    <p><span data-l="uk">Версія</span><span data-l="en">Version</span> <b id="fver">…</b> · <span id="fsize"></span></p>
+    <p><a class="btn" id="fdl" href="download/Helmy-Firmware.zip"><span data-l="uk">Helmy-Firmware.zip</span><span data-l="en">Helmy-Firmware.zip</span></a></p>
+    <p>SHA-256: <code id="fsha">…</code></p>
+    <p data-l="uk">Для плати Waveshare ESP32-S3-Touch-AMOLED-1.75C. Розпакуйте й запустіть <code>Flash-Helmy.bat</code>. Якщо плата вже з Helmy, оновлюйте прошивку з Agent.</p>
+    <p data-l="en">For the Waveshare ESP32-S3-Touch-AMOLED-1.75C board. Unpack and run <code>Flash-Helmy.bat</code>. If the board already runs Helmy, update the firmware from the Agent.</p>
+  </div>
+</div>
+<p class="note" data-l="uk">Windows може показати попередження про невідомого видавця (SmartScreen): натисніть «Докладніше» → «Все одно виконати». Перевірте SHA-256 завантаженого файлу (PowerShell: <code>Get-FileHash .\Helmy-Setup.exe</code>) — він має збігатися з вказаним вище.</p>
+<p class="note" data-l="en">Windows may warn about an unknown publisher (SmartScreen): press “More info” → “Run anyway”. Check the SHA-256 of the downloaded file (PowerShell: <code>Get-FileHash .\Helmy-Setup.exe</code>) — it must match the value above.</p>
+
+<h2 data-l="uk">Швидкий старт</h2><h2 data-l="en">Quick start</h2>
+<ol class="steps">
+  <li data-l="uk"><b>Встановіть Helmy Agent</b> на ПК: запустіть Helmy-Setup.exe і пройдіть майстер. Agent оселиться в треї й запускатиметься разом з Windows.</li>
+  <li data-l="en"><b>Install Helmy Agent</b> on the PC: run Helmy-Setup.exe and follow the wizard. The Agent lives in the tray and starts with Windows.</li>
+  <li data-l="uk"><b>Підключіть плату USB-кабелем із даними</b> до ПК. Agent знайде її сам — на головній з'явиться «на зв'язку», а на платі — дані ПК.</li>
+  <li data-l="en"><b>Plug the board in with a USB data cable.</b> The Agent finds it by itself — the home page shows “connected” and the board starts showing PC data.</li>
+  <li data-l="uk"><b>Хочете без кабелю?</b> Спаріть по Bluetooth: на платі «Меню → Налаштування → Підключення → Bluetooth з ПК», а PIN із плати введіть в Agent. Докладно — в <a href="guide.html#connect">інструкції</a>.</li>
+  <li data-l="en"><b>Want it wireless?</b> Pair over Bluetooth: on the board “Menu → Settings → Connection → Bluetooth to PC”, then enter the board's PIN in the Agent. Details in the <a href="guide.html#connect">guide</a>.</li>
+</ol>
+<p><a class="btn ghost" href="guide.html"><span data-l="uk">Повна інструкція</span><span data-l="en">Full guide</span></a></p>
+
+<div class="card" style="margin-top:40px">
+  <b data-l="uk">Шукаєте Keyhelm?</b><b data-l="en">Looking for Keyhelm?</b>
+  <p data-l="uk">Keyhelm — окремий застосунок для керування ПК з телефона. Його сторінка завантаження тут: <a href="keyhelm.html">keyhelm.html</a>.</p>
+  <p data-l="en">Keyhelm is a separate app for controlling a PC from a phone. Its download page is here: <a href="keyhelm.html">keyhelm.html</a>.</p>
+</div>
 
 <footer>
-  <a href="privacy.html" data-l="uk">Політика конфіденційності</a><a href="privacy.html" data-l="en">Privacy policy</a>
+  <a href="guide.html" data-l="uk">Інструкція</a><a href="guide.html" data-l="en">Guide</a>
+  · <a href="privacy.html" data-l="uk">Політика конфіденційності</a><a href="privacy.html" data-l="en">Privacy policy</a>
   · <span data-l="uk">Підтримка:</span><span data-l="en">Support:</span> <span id="mail">[вкажіть email]</span>
 </footer>
 </div>
@@ -83,10 +108,11 @@ function setLang(l){ document.documentElement.lang = l; $('bUk').classList.toggl
 $('bUk').onclick = () => setLang('uk'); $('bEn').onclick = () => setLang('en');
 let saved = null; try{ saved = localStorage.getItem('lang') }catch(e){}
 setLang(saved || ((navigator.language||'').toLowerCase().startsWith('uk') ? 'uk' : 'en'));
-fetch('version.json', {cache:'no-store'}).then(r => r.json()).then(v => {
-  $('ver').textContent = v.version; $('sha').textContent = v.sha256; $('size').textContent = (v.size/1048576).toFixed(1) + ' MB'; $('date').textContent = v.date;
-  if (v.file) $('dl').href = v.file;
-  if (v.play) { $('play').href = v.play; $('play').hidden = false; }
+const mb = n => (n/1048576).toFixed(1) + ' MB';
+fetch('helmy.json', {cache:'no-store'}).then(r => r.json()).then(v => {
+  const a = v.agent || {}, f = v.firmware || {};
+  if (a.version) { $('aver').textContent = a.version; $('asha').textContent = a.sha256; $('asize').textContent = mb(a.size); if (a.file) $('adl').href = a.file; }
+  if (f.version) { $('fver').textContent = f.version; $('fsha').textContent = f.sha256; $('fsize').textContent = mb(f.size); if (f.file) $('fdl').href = f.file; }
   if (v.email) $('mail').textContent = v.email;
 }).catch(() => {});
 </script>

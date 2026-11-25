@@ -1,0 +1,40 @@
+:root{--bg:#0a0a18;--surface:#12121f;--high:#1b1b30;--line:#2a2a46;--violet:#8b5cf6;--deep:#5b34e6;--text:#f2f2fa;--muted:#a4a4c8;--ok:#22d17b;--warn:#ffb347;--bad:#ff5d6c}
+@media (prefers-color-scheme: light){:root{--bg:#f4f4fa;--surface:#fff;--high:#e9e9f5;--line:#d3d3e6;--violet:#6d3fe0;--text:#1b1b2e;--muted:#5a5a82;--ok:#14a35f;--warn:#c97a00;--bad:#d6293a}}
+*{box-sizing:border-box} [hidden]{display:none!important} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:20px 16px 72px}
+nav{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:6px 0}
+nav .logo{font-size:24px;font-weight:800;letter-spacing:.1em;color:var(--violet);text-decoration:none;display:flex;align-items:center;gap:10px;margin-right:auto}
+nav .logo img{border-radius:10px}
+nav a.l{color:var(--muted);text-decoration:none;font-size:15px} nav a.l:hover,nav a.l.on{color:var(--text)}
+.lang button{background:none;border:1px solid var(--line);color:var(--muted);padding:4px 10px;border-radius:8px;cursor:pointer}
+.lang button.on{color:var(--text);border-color:var(--violet)}
+h1{font-size:40px;line-height:1.15;margin:8px 0 10px} h2{font-size:26px;margin:52px 0 12px} h3{font-size:19px;margin:28px 0 6px}
+p{color:var(--muted);margin:8px 0} li{color:var(--muted)} li b,p b{color:var(--text)}
+a{color:var(--violet)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;margin:28px 0 8px}
+@media(max-width:760px){.hero{grid-template-columns:1fr} h1{font-size:32px}}
+.btn{display:inline-block;background:var(--deep);color:#fff!important;text-decoration:none;padding:13px 22px;border-radius:12px;font-weight:600;margin:6px 8px 6px 0}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--text)!important}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;margin:14px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.grid .card{margin:0}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:18px 0}
+.shots figure{margin:0;text-align:center} .shots img{width:100%;max-width:240px;border-radius:50%;border:2px solid var(--line);background:#000}
+.shots figcaption{font-size:13px;color:var(--muted);margin-top:6px}
+code,kbd{background:var(--high);padding:2px 7px;border-radius:6px;font-size:13px;word-break:break-all}
+ol,ul{padding-left:22px} li{margin:6px 0}
+.note{border-left:3px solid var(--warn);padding:2px 0 2px 12px} .tip{border-left:3px solid var(--ok);padding:2px 0 2px 12px}
+.steps{counter-reset:s;list-style:none;padding:0} .steps>li{counter-increment:s;position:relative;padding:0 0 0 46px;margin:16px 0}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;background:var(--deep);color:#fff;font-weight:700;display:grid;place-items:center}
+table{width:100%;border-collapse:collapse;margin:10px 0} th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);color:var(--muted);font-size:15px} th{color:var(--text)}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0} .toc a{border:1px solid var(--line);border-radius:999px;padding:5px 14px;color:var(--muted);text-decoration:none;font-size:14px} .toc a:hover{color:var(--text);border-color:var(--violet)}
+footer{margin-top:56px;font-size:14px;color:var(--muted)} footer a{color:var(--violet)}
+[data-l]{display:none} html[lang=uk] [data-l=uk],html[lang=en] [data-l=en]{display:revert}
+/* animated Helmy eyes */
+.bot{width:min(300px,80vw);aspect-ratio:1;margin:auto;border-radius:30%;background:linear-gradient(180deg,#1d194f,#10102a);border:2px solid #3a3470;box-shadow:0 0 60px #22e08a33;position:relative;display:flex;justify-content:center;align-items:center;gap:13%}
+.bot i{display:block;width:21%;height:36%;background:#fff;border-radius:42%;position:relative;animation:blink 5s infinite}
+.bot i::after{content:"";position:absolute;width:42%;height:30%;background:#0a0a1c;border-radius:50%;left:30%;top:34%;animation:look 7s infinite}
+.bot b{position:absolute;bottom:17%;left:50%;width:15%;height:8%;border-bottom:5px solid #8b5cf6;border-radius:0 0 80px 80px;transform:translateX(-50%)}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+@keyframes look{0%,100%{transform:translate(0,0)}25%{transform:translate(-45%,-10%)}60%{transform:translate(45%,15%)}}
